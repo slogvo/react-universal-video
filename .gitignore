@@ -29,4 +29,6 @@ dist-ssr
 .cache/
 .pnpm-store/
 
-.pnpm-lock.yaml
+#lock-files
+pnpm-lock
+pnpm-lock.yaml

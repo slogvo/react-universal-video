@@ -28,3 +28,10 @@ dist-ssr
 
 .cache/
 .pnpm-store/
+
+#lock-files
+pnpm-lock
+pnpm-lock.yaml
+
+#npmrc
+.npmrc

@@ -1,7 +1,22 @@
 {
   "name": "react-universal-video",
-  "private": true,
   "version": "1.0.0",
+  "description": "RReact universal video",
+  "keywords": [
+    "react",
+    "react_18",
+    "react_dependency",
+    "videojs"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/slogvo/react-universal-video",
+    "directory": "packages/react-universal-video"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "license": "MIT",
   "type": "module",
   "files": [
     "dist"

@@ -1,6 +1,6 @@
 {
   "name": "@slogvo/react-universal-video",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "React universal video",
   "keywords": [
     "react",
@@ -8,13 +8,12 @@
     "react_dependency",
     "videojs"
   ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/slogvo/react-universal-video",
-    "directory": "packages/react-universal-video"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "url": "git+https://github.com/slogvo/react-universal-video"
   },
   "license": "MIT",
   "type": "module",

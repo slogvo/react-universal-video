@@ -10,11 +10,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/slogvo/react-universal-video",
-    "directory": "packages/react-universal-video"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "url": "git+https://github.com/slogvo/react-universal-video"
   },
   "license": "MIT",
   "type": "module",

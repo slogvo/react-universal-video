@@ -1,13 +1,13 @@
-import { BrowserRouter as Router } from "react-router-dom";
-
-import Header from "./components/Header";
+import VideoPlayer from "./components/VideoPlayer";
 
 function App() {
   return (
-    <Router>
-      <Header />
-    </Router>
+    <div>
+      <VideoPlayer
+        url="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+        width="800"
+        height="450"
+      />
+    </div>
   );
 }
-
-export default App;

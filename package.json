@@ -1,7 +1,7 @@
 {
-  "name": "react-universal-video",
-  "version": "1.0.0",
-  "description": "RReact universal video",
+  "name": "@slogvo/react-universal-video",
+  "version": "1.0.1",
+  "description": "React universal video",
   "keywords": [
     "react",
     "react_18",

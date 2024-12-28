@@ -59,9 +59,9 @@ jobs:
           TAG_NAME=${GITHUB_REF#refs/tags/}  # Extract tag name from GITHUB_REF
           npm version "$TAG_NAME" --no-git-tag-version  # Set npm version to tag name without creating a new git tag
 
-      # Step 9: Publish to npm (using pnpm)
-      - name: Publish to npm
-        run: pnpm publish --no-git-checks
+      # # Step 9: Publish to npm (using pnpm)
+      # - name: Publish to npm
+      #   run: pnpm publish --no-git-checks
 
       - name: Upload build artifacts
         if: success()

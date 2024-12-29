@@ -4,7 +4,7 @@ function App() {
   return (
     <div>
       <VideoPlayer
-        url="https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
+        url="https://www.youtube.com/watch?v=oA91tf1Udr0"
         width="800"
         height="450"
       />

@@ -4,7 +4,9 @@
 
 ## Installation
 
-To use the module, you can install it via npm, yarn or pnpm:
+<div style="color:#0ea5e9; margin-bottom: 8px">To use the module, follow these steps:</div>
+
+<strong>1. You can install it via npm, yarn or pnpm:</strong>
 
 ```bash
 npm i @slogvo/react-universal-video
@@ -17,6 +19,20 @@ yarn add @slogvo/react-universal-video
 ```bash
 pnpm add @slogvo/react-universal-video
 ```
+
+<strong>2. Install required peer dependencies:</strong>
+
+```bash
+pnpm install react react-dom video.js videojs-contrib-quality-levels videojs-http-source-selector
+```
+
+<strong>3. You can import the Video.js CSS into your project wherever you need it. You have the flexibility to include it globally, or only in the specific components or pages where it is required. Here are a couple of options for doing so:</strong>
+
+```bash
+import "video.js/dist/video-js.css";
+```
+
+You can also check out more information at https://videojs.com/guides/react.
 
 ## Usage
 

@@ -1,6 +1,6 @@
 {
   "name": "@slogvo/react-universal-video",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "React universal video",
   "main": "dist/index.js",
   "module": "dist/index.mjs",

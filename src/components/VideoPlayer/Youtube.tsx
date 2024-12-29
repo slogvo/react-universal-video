@@ -1,5 +1,5 @@
+import { VideoProps } from "@/types/video";
 import { getYoutubeId } from "@/utils/video-utils";
-import { VideoProps } from "../../types/video";
 const YoutubePlayer = ({
   url,
   width = "100%",

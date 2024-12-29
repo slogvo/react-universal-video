@@ -1,27 +1,38 @@
-import path from "path";
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react-swc";
+import react from "@vitejs/plugin-react";
+import dts from "vite-plugin-dts";
+import { fileURLToPath } from "url";
+import { dirname, resolve } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), dts({ include: ["src"] })],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
-      "@components": path.resolve(__dirname, "./src/components"),
-      "@lib": path.resolve(__dirname, "./src/lib"),
-      "@hooks": path.resolve(__dirname, "./src/hooks"),
-      "@ui": path.resolve(__dirname, "./src/components/ui"),
+      "@": resolve(__dirname, "./src"),
+      "@components": resolve(__dirname, "./src/components"),
+      "@lib": resolve(__dirname, "./src/lib"),
+      "@hooks": resolve(__dirname, "./src/hooks"),
+      "@ui": resolve(__dirname, "./src/components/ui"),
     },
   },
   build: {
-    outDir: "dist",
-    sourcemap: process.env.NODE_ENV === "development",
+    sourcemap: true,
+    lib: {
+      entry: resolve(__dirname, "src/main.tsx"),
+      name: "VideoPlayer",
+      fileName: (format) =>
+        `video-player.${format === "es" ? "js" : "umd.cjs"}`,
+    },
     rollupOptions: {
-      external: ["react", "react-dom"],
+      external: ["react", "react-dom", "video.js"],
       output: {
         globals: {
           react: "React",
           "react-dom": "ReactDOM",
+          "video.js": "videojs",
         },
       },
     },

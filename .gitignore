@@ -33,3 +33,6 @@ dist-ssr
 pnpm-lock
 pnpm-lock.yaml
 
+
+# Build
+tsconfig.tsbuildinfo

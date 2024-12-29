@@ -1,4 +1,4 @@
-import { VideoProps } from "../../types/video";
+import { VideoProps } from "@/types/video";
 
 const Html5Player = ({
   url,

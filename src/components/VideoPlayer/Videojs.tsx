@@ -1,52 +1,108 @@
-// src/components/VideoPlayer/Videojs.tsx
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import videojs from "video.js";
 import "video.js/dist/video-js.css";
-import { VideoProps } from "../../types/video";
 
-const VideojsPlayer = ({
+interface VideoProps {
+  url: string;
+  width?: string;
+  height?: string;
+  autoplay?: boolean;
+  controls?: boolean;
+  className?: string;
+}
+
+const VideojsPlayer: React.FC<VideoProps> = ({
   url,
   width = "100%",
   height = "400px",
   autoplay = false,
   controls = true,
   className,
-}: VideoProps) => {
-  const videoRef = useRef<HTMLVideoElement | null>(null);
+}) => {
+  const videoRef = useRef<HTMLDivElement>(null);
   const playerRef = useRef<any>(null);
 
   useEffect(() => {
-    if (!videoRef.current) return;
+    if (!playerRef.current && videoRef.current) {
+      const videoElement = document.createElement("video-js");
+      videoElement.classList.add("vjs-big-play-centered");
+      videoRef.current.appendChild(videoElement);
 
-    playerRef.current = videojs(videoRef.current, {
-      sources: [
+      const player = (playerRef.current = videojs(
+        videoElement,
         {
-          src: url,
-          type: url.includes(".m3u8")
-            ? "application/x-mpegURL"
-            : "application/x-mpegURL",
+          autoplay,
+          controls,
+          responsive: true,
+          fluid: false,
+          sources: [
+            {
+              src: url,
+              type: "application/x-mpegURL",
+            },
+          ],
+          html5: {
+            vhs: {
+              overrideNative: true,
+              enableLowInitialPlaylist: true,
+              smoothQualityChange: true,
+              allowSeeksWithinUnsafeLiveWindow: true,
+            },
+            nativeAudioTracks: false,
+            nativeVideoTracks: false,
+          },
+          liveui: true,
         },
-      ],
-      width,
-      height,
-      autoplay,
-      controls,
-      fluid: true,
-    });
+        () => {
+          console.log("Player is ready");
+
+          // Add event listeners for debugging
+          player.on("waiting", () => {
+            console.log("Player is buffering");
+          });
+
+          player.on("canplay", () => {
+            console.log("Player can play");
+          });
+        }
+      ));
+
+      // Enhanced error handling
+      player.on("error", (error: any) => {
+        const errorDetails = {
+          code: player.error()?.code,
+          message: player.error()?.message,
+          type: error.type,
+        };
+        console.error("Video.js player error:", errorDetails);
+      });
+    } else if (playerRef.current) {
+      const player = playerRef.current;
+      player.src({
+        src: url,
+        type: "application/x-mpegURL",
+      });
+
+      player.autoplay(autoplay);
+      player.controls(controls);
+    }
 
     return () => {
-      if (playerRef.current) {
+      if (playerRef.current && !playerRef.current.isDisposed()) {
         playerRef.current.dispose();
+        playerRef.current = null;
       }
     };
-  }, [url]);
+  }, [url, autoplay, controls]);
+
+  const containerStyle = {
+    width,
+    height,
+  };
 
   return (
-    <div data-vjs-player>
-      <video
-        ref={videoRef}
-        className={`video-js vjs-big-play-centered ${className || ""}`}
-      />
+    <div data-vjs-player style={containerStyle} className={className}>
+      <div ref={videoRef} style={{ width: "100%", height: "100%" }} />
     </div>
   );
 };

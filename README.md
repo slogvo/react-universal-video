@@ -2,6 +2,10 @@
 
 `@slogvo/react-universal-video` is a React module that allows you to easily play videos from different sources such as HTML5, YouTube, and streaming services (like HLS). Simply provide a video URL, and the module will automatically select the appropriate player to play the video. You can also customize the player’s style as needed.
 
+## DEMO
+
+Link demo: https://reaact-universal-app.vercel.app/
+
 ## Installation
 
 <div style="color:#0ea5e9; margin-bottom: 8px">To use the module, follow these steps:</div>

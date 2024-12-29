@@ -1,113 +1,107 @@
-# React + TypeScript + Vite + ShadCN +Tailwind CSS
+# @slogvo/react-universal-video
 
-This project is a modern React application template set up with TypeScript, Vite, ShadCN, Tailwind CSS, and PNPM for efficient and scalable development.
+`@slogvo/react-universal-video` is a React module that allows you to easily play videos from different sources such as HTML5, YouTube, and streaming services (like HLS). Simply provide a video URL, and the module will automatically select the appropriate player to play the video. You can also customize the player’s style as needed.
 
-## Features
+## Installation
 
-- **React**: A JavaScript library for building user interfaces.
-- **TypeScript**: Provides static typing for better code quality and development experience.
-- **Vite**: A fast and lightweight build tool for modern web development.
-- **ShadCN**: UI components based on Radix for accessible and customizable design.
-- **Tailwind CSS**: Utility-first CSS framework for rapidly building custom designs.
-- **PNPM**: Fast and disk space-efficient package manager.
+To use the module, you can install it via npm, yarn or pnpm:
 
----
+```bash
+npm i @slogvo/react-universal-video
+```
 
-## Installation and Usage
+```bash
+yarn add @slogvo/react-universal-video
+```
 
-### Prerequisites
+```bash
+pnpm add @slogvo/react-universal-video
+```
 
-Ensure you have the following installed:
+## Usage
 
-- [Node.js](https://nodejs.org/) (version 16 or later recommended)
-- [PNPM](https://pnpm.io/) (version 7 or later)
+To use the video player, simply import the VideoPlayer component and pass the video URL as a prop.
 
-### Steps to Run the Project
+### Example:
 
-1. **Clone the Repository**
+```typescript
+import React from "react";
+import VideoPlayer from "@slogvo/react-universal-video";
 
-   ```bash
-   git clone <repository-url>
-   cd <project-folder>
-   ```
+const App = () => {
+  return (
+    <div>
+      // HTML5
+      <VideoPlayer
+        url="https://videos.pexels.com/video-files/5013307/5013307-hd_1920_1080_30fps.mp4"
+        width="800"
+        height="450"
+      />
+      // Yotube
+      <VideoPlayer
+        url="https://www.youtube.com/watch?v=oA91tf1Udr0"
+        width="800"
+        height="450"
+      />
+      // HLS
+      <VideoPlayer
+        url="https://live-hls-abr-cdn.livepush.io/live/bigbuckbunnyclip/index.m3u8"
+        width="800"
+        height="450"
+      />
+    </div>
+  );
+};
 
-2. **Install Dependencies**
+export default App;
+```
 
-   Run the following command to install the project dependencies:
+## VideoPlayer Component Props
 
-   ```bash
-   pnpm install
-   ```
+| Prop        | Description                                                                   | Default |
+| ----------- | ----------------------------------------------------------------------------- | ------- |
+| `url`       | The video URL to play. This can be a YouTube URL, MP4 file, or streaming URL. | `-`     |
+| `width`     | The width of the player.                                                      | `100%`  |
+| `height`    | The height of the player.                                                     | `400px` |
+| `autoplay`  | Whether the video should autoplay.                                            | `false` |
+| `controls`  | Whether to show video controls (play, pause, volume, etc.).                   | `true`  |
+| `className` | Custom CSS class for the player.                                              | `-`     |
 
-3. **Start the Development Server**
+## Components
 
-   Launch the application in development mode with:
+### VideoPlayer
 
-   ```bash
-   pnpm dev
-   ```
+The main component of this module. It automatically selects the appropriate player (YouTube, HTML5, or streaming) based on the video URL you provide.
 
-   Open your browser and navigate to `http://localhost:5173` to view the app.
+```typescript
+import VideoPlayer from "@slogvo/react-universal-video";
+```
 
-4. **Build for Production**
+## How It Works
 
-   Create an optimized production build:
+The VideoPlayer component automatically determines the type of video based on the provided URL:
 
-   ```bash
-   pnpm build
-   ```
+<div><strong>YouTube:</strong> If the URL is a YouTube video, the YoutubePlayer component will be used.
+<div>
 
-   The build files will be located in the `dist` folder.
+<div><strong>HTML5 (MP4):</strong> If the URL is an MP4 file (or other HTML5 video formats), the Html5 component will be used.</div>
+<div><strong>Stream (HLS):</strong> If the URL is a streaming video (e.g., m3u8), the VideojsPlayer component will be used.</div>
 
-5. **Preview Production Build**
+## Customizing Styles
 
-   Preview the production build locally:
+You can add custom CSS classes to the player using the className prop to style the player as needed.
 
-   ```bash
-   pnpm preview
-   ```
+## Utility Functions
 
----
+You can use utility functions from @slogvo/react-universal-video to interact with video URLs, such as extracting YouTube video IDs:
 
-## Customization
+```typescript
+import { getYoutubeId } from "@slogvo/react-universal-video";
 
-- **ShadCN Components**:
-  Visit the [ShadCN Documentation](https://shadcn.dev) to explore available components and customize them as per your requirements.
+const youtubeId = getYoutubeId("https://www.youtube.com/watch?v=9cklv0qQ8Jw");
+console.log(youtubeId); // Output: 9cklv0qQ8Jw
+```
 
-- **Tailwind CSS**:
-  Modify the `tailwind.config.js` file to adjust the theme or extend utilities.
+## Contributing
 
----
-
-## Scripts
-
-Here are some useful scripts:
-
-- `pnpm dev`: Start the development server.
-- `pnpm build`: Build the application for production.
-- `pnpm preview`: Preview the production build.
-- `pnpm lint`: Run linters to check code quality.
-
----
-
-## Contribution
-
-Feel free to submit issues and pull requests to contribute to the project.
-
----
-
-## License
-
-This project is licensed under the [MIT License](./LICENSE).
-
----
-
-## Acknowledgements
-
-- [React](https://reactjs.org/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Vite](https://vitejs.dev/)
-- [ShadCN](https://shadcn.dev/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [PNPM](https://pnpm.io/)
-
+If you'd like to contribute to @slogvo/react-universal-video, feel free to fork the repository and submit a pull request. We appreciate your contributions!

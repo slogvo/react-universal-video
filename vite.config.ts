@@ -21,7 +21,7 @@ export default defineConfig({
   build: {
     sourcemap: true,
     lib: {
-      entry: resolve(__dirname, "src/main.tsx"),
+      entry: resolve(__dirname, "src/index.ts"),
       name: "VideoPlayer",
       fileName: (format) =>
         `video-player.${format === "es" ? "js" : "umd.cjs"}`,

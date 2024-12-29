@@ -1,13 +1,14 @@
 {
   "name": "@slogvo/react-universal-video",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "React universal video",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
     }
   },
   "keywords": [

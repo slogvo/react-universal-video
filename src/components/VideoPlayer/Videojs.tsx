@@ -6,7 +6,7 @@ import "video.js/dist/video-js.css";
 const VideojsPlayer: React.FC<VideoProps> = ({
   url,
   width = "100%",
-  height = "400px",
+  height = "100%",
   autoplay = false,
   controls = true,
   className,
@@ -53,9 +53,13 @@ const VideojsPlayer: React.FC<VideoProps> = ({
         width: typeof width === "number" ? `${width}px` : width,
         height: typeof height === "number" ? `${height}px` : height,
       }}
-      className={className}
+      className={`${className}`}
     >
-      <div ref={videoRef} style={{ width: "100%", height: "100%" }} />
+      <div
+        ref={videoRef}
+        style={{ width: "100%", height: "100%" }}
+        className="w-full h-full aspect-video bg-red-500"
+      />
     </div>
   );
 };

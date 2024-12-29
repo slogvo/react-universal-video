@@ -1,7 +1,15 @@
 {
   "name": "@slogvo/react-universal-video",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "description": "React universal video",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
   "keywords": [
     "react",
     "react_18",
@@ -24,7 +32,8 @@
   "license": "MIT",
   "type": "module",
   "files": [
-    "dist"
+    "dist",
+    "dist/**/*"
   ],
   "scripts": {
     "test": "vitest",
@@ -36,7 +45,10 @@
   },
   "peerDependencies": {
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "video.js": "^8.21.0",
+    "videojs-contrib-quality-levels": "^4.1.0",
+    "videojs-http-source-selector": "^1.1.6"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.0",
@@ -50,10 +62,7 @@
     "react-router-dom": "6.28.0",
     "shadcn-ui": "^0.9.3",
     "tailwind-merge": "^2.5.4",
-    "tailwindcss-animate": "^1.0.7",
-    "video.js": "^8.21.0",
-    "videojs-contrib-quality-levels": "^4.1.0",
-    "videojs-http-source-selector": "^1.1.6"
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",

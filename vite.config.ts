@@ -23,8 +23,7 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, "src/index.ts"),
       name: "VideoPlayer",
-      fileName: (format) =>
-        `video-player.${format === "es" ? "js" : "umd.cjs"}`,
+      fileName: (format) => `index.${format === "es" ? "mjs" : "js"}`,
     },
     rollupOptions: {
       external: ["react", "react-dom", "video.js"],
